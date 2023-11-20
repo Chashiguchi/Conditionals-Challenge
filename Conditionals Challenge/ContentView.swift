@@ -106,10 +106,11 @@ struct ContentView: View {
          *
          * Use both of the choice statements below.
          ************************************/
-        
+        if totalMoney >= firstChoiceCost {
             choice = "can"
+        }else {
             choice = "cannot"
-            
+        }
         /*********************************
          * End of MVP
          ***********************************/
@@ -134,10 +135,13 @@ struct ContentView: View {
          *
          * Use all three of the choice statements below
          ************************************/
-        
+        if totalMoney > firstChoiceCost {
             choice = "have more than enough"
+        } else if totalMoney == firstChoiceCost {
             choice = "have just enough"
+        }else {
             choice = "do not have enough"
+        }
         
         /*********************************
          * End of Stretch 1
@@ -163,12 +167,22 @@ struct ContentView: View {
          *
          * Use all four of the message statements below.
          ************************************/
-        
+        if totalMoney >= firstChoiceCost {
             message += "You can purchase your first choice\n"
+            totalMoney = totalMoney - firstChoiceCost
+        }
+        if totalMoney >= secondChoiceCost {
             message += "You can purchase your second choice\n"
+            totalMoney = totalMoney - secondChoiceCost
+        }
+        if totalMoney >= thirdChoiceCost {
             message += "You can purchase your third choice\n"
+            totalMoney = totalMoney - thirdChoiceCost
+        }
+        if totalMoney >= fourthChoiceCost {
             message += "You can purchase your fourth choice\n"
-        
+            totalMoney = totalMoney - fourthChoiceCost
+        }
         /*********************************
          * End of Stretch 2
          ***********************************/
@@ -190,15 +204,30 @@ struct ContentView: View {
          *
          * Use all eight of the message statements below.
          ************************************/
-        
+        if totalMoney >= firstChoiceCost {
             message += "You can purchase your first choice\n"
+            totalMoney = totalMoney - firstChoiceCost
+        } else if totalMoney < firstChoiceCost {
             message += "You cannot purchase your first choice\n"
+        }
+        if totalMoney >= secondChoiceCost {
             message += "You can purchase your second choice\n"
+            totalMoney = totalMoney - secondChoiceCost
+        } else if totalMoney < secondChoiceCost {
             message += "You cannot purchase your second choice\n"
+        }
+        if totalMoney >= thirdChoiceCost {
             message += "You can purchase your third choice\n"
+            totalMoney = totalMoney - thirdChoiceCost
+        } else if totalMoney < thirdChoiceCost {
             message += "You cannot purchase your third choice\n"
+        }
+        if totalMoney >= fourthChoiceCost {
             message += "You can purchase your fourth choice\n"
+            totalMoney = totalMoney - fourthChoiceCost
+        } else if totalMoney < fourthChoiceCost {
             message += "You cannot purchase your fourth choice\n"
+        }
         
         /*********************************
          * End of Stretch 3
@@ -224,12 +253,17 @@ struct ContentView: View {
          *
          * Use all five of the message statements below.
          ************************************/
-        
+        if totalMoney >= fourItems {
             message += "You can purchase all four items\n"
+        } else if totalMoney >= threeItems {
             message += "You can purchase your top three items\n"
+        } else if totalMoney >= twoItems {
             message += "You can purchase your top two items\n"
+        } else if totalMoney >= oneItem {
             message += "You can only purchase your top item\n"
+        } else {
             message += "You cannot purchase any of your items\n"
+        }
         
         /*********************************
          * End of Stretch 4
@@ -257,16 +291,16 @@ struct ContentView: View {
          * Use all ten of the message statements below.
          ************************************/
         
-            message += "You can purchase all four items\n"
-            message += "You have spent $\(fourItems) and have $\(totalMoney - fourItems) remaining\n"
-            message += "You can purchase your top three items\n"
-            message += "You have spent $\(threeItems) and have $\(totalMoney - threeItems) remaining\n"
-            message += "You can purchase your top two items\n"
-            message += "You have spent $\(twoItems) and have $\(totalMoney - twoItems) remaining\n"
-            message += "You can only purchase your top item\n"
-            message += "You have spent $\(firstChoiceCost) and have $\(totalMoney - firstChoiceCost) remaining\n"
-            message += "You cannot purchase any of your items\n"
-            message += "You have spent $0 and have $\(totalMoney) remaining\n"
+        message += "You can purchase all four items\n"
+        message += "You have spent $\(fourItems) and have $\(totalMoney - fourItems) remaining\n"
+        message += "You can purchase your top three items\n"
+        message += "You have spent $\(threeItems) and have $\(totalMoney - threeItems) remaining\n"
+        message += "You can purchase your top two items\n"
+        message += "You have spent $\(twoItems) and have $\(totalMoney - twoItems) remaining\n"
+        message += "You can only purchase your top item\n"
+        message += "You have spent $\(firstChoiceCost) and have $\(totalMoney - firstChoiceCost) remaining\n"
+        message += "You cannot purchase any of your items\n"
+        message += "You have spent $0 and have $\(totalMoney) remaining\n"
         
         /*********************************
          * End of Stretch 5
@@ -378,7 +412,7 @@ struct ContentView: View {
             stretch3Check = "Correct"
         }
     }
-
+    
     func checkStretch4(answer: String) {
         let totalMoney = randomMoney
         var check = ""
