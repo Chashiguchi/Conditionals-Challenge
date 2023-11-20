@@ -290,18 +290,22 @@ struct ContentView: View {
          *
          * Use all ten of the message statements below.
          ************************************/
-        
-        message += "You can purchase all four items\n"
-        message += "You have spent $\(fourItems) and have $\(totalMoney - fourItems) remaining\n"
-        message += "You can purchase your top three items\n"
-        message += "You have spent $\(threeItems) and have $\(totalMoney - threeItems) remaining\n"
-        message += "You can purchase your top two items\n"
-        message += "You have spent $\(twoItems) and have $\(totalMoney - twoItems) remaining\n"
-        message += "You can only purchase your top item\n"
-        message += "You have spent $\(firstChoiceCost) and have $\(totalMoney - firstChoiceCost) remaining\n"
-        message += "You cannot purchase any of your items\n"
-        message += "You have spent $0 and have $\(totalMoney) remaining\n"
-        
+        if totalMoney >= fourItems {
+            message += "You can purchase all four items\n"
+            message += "You have spent $\(fourItems) and have $\(totalMoney - fourItems) remaining\n"
+        } else if totalMoney >= threeItems {
+            message += "You can purchase your top three items\n"
+            message += "You have spent $\(threeItems) and have $\(totalMoney - threeItems) remaining\n"
+        } else if totalMoney >= twoItems {
+            message += "You can purchase your top two items\n"
+            message += "You have spent $\(twoItems) and have $\(totalMoney - twoItems) remaining\n"
+        } else if totalMoney >= oneItem {
+            message += "You can only purchase your top item\n"
+            message += "You have spent $\(firstChoiceCost) and have $\(totalMoney - firstChoiceCost) remaining\n"
+        } else {
+            message += "You cannot purchase any of your items\n"
+            message += "You have spent $0 and have $\(totalMoney) remaining\n"
+            }
         /*********************************
          * End of Stretch 5
          ***********************************/
